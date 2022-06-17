@@ -1,7 +1,10 @@
 // first step -> npm i request
 const request= require("request");
 const fs = require("fs");
-let url = "https://namastedev.com";
+let url = "https://www.google.com";
+
+const jsdom = require("jsdom");
+const JSDOM = jsdom.JSDOM;
 
 //how does request works
 //1. request to given url
@@ -26,7 +29,21 @@ function cb(error,response,body){
     console.log("page not found");
   }
   else{
-    fs.writeFileSync("index.html",body);
+    extractHTML(body);
 
   }
+}
+
+function extractHTML(html){
+  let dom = new JSDOM(html);
+  let document = dom.window.document;
+
+  let languages = document.querySelectorAll("#SIvCob a");
+  //we get languages array with all the supported languages by google
+
+  for(let i=0;i<languages.length;i++){
+    let language = languages[i].textContent;
+    console.log("language :"+language);
+  }
+
 }
