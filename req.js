@@ -1,6 +1,6 @@
 // first step -> npm i request
 const request= require("request");
-let url = "http://www.google.com";
+let url = "https://namastedev.com";
 
 //how does request works
 //1. request to given url
