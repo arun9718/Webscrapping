@@ -27,5 +27,6 @@ function cb(error,response,body){
   }
   else{
     fs.writeFileSync("index.html",body);
+
   }
 }
